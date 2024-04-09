@@ -12,7 +12,7 @@ public class Main {
         }
         //Задача 3
         System.out.println("\nЗадача 3");
-        for (int i = 2; i < 17; i+=2) {
+        for (int i = 0; i < 17; i += 2) {
             System.out.println(i);
         }
         //Задача 4
@@ -22,12 +22,32 @@ public class Main {
         }
         //Задача 5
         System.out.println("\nЗадача 5");
-        for (int i = 1904; i <= 2096; i+= 4) {
-            System.out.printf("%s год является високосным\n", i);
+        int yearRestDivFour = 0;
+        int yearRestDivOneHundred = 0;
+        int yearRestDivFourHundred = 0;
+        boolean divFour = false;
+        boolean divOneHundred = false;
+        boolean divFourHundred = false;
+        int firstYear = 1904;
+        int lastYear = 2096;
+        for (int i = firstYear; i <= lastYear; i++) {
+            yearRestDivFour = i % 4;
+            yearRestDivOneHundred = i % 100;
+            yearRestDivFourHundred = i % 400;
+            divFour = yearRestDivFour == 0;
+            divOneHundred = yearRestDivOneHundred == 0;
+            divFourHundred = yearRestDivFourHundred == 0;
+            if (i >= 1584) {
+                if (divFourHundred) {
+                    System.out.printf("%s год является високосным\n", i);
+                } else if (divFour && !divOneHundred) {
+                    System.out.printf("%s год является високосным\n", i);
+                }
+            }
         }
         //Задача 6
         System.out.println("\nЗадача 6");
-        for (int i = 7; i <= 98; i+= 7) {
+        for (int i = 7; i <= 98; i += 7) {
             System.out.printf("%s ", i);
         }
         //Задача 7
@@ -48,16 +68,14 @@ public class Main {
         int savingForGrow = 29000;
         int depositInBank = 0;
         for (int i = 1; i <= 12; i++) {
+            depositInBank += depositInBank / 100;
             depositInBank += savingForGrow;
             System.out.printf("Месяц %s, сумма накоплений равна %s рублей\n", i, depositInBank);
-            depositInBank += depositInBank / 100;
         }
         //Задача 10
         System.out.println("\n\nЗадача 10");
-        int base = 2;
         for (int i = 1; i <= 10; i++) {
-            System.out.printf("2*%s=%s\n", i, base);
-            base += 2;
+            System.out.printf("2*%s=%s\n", i, i*2);
         }
     }
 }
